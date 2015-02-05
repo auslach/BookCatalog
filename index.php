@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>PHP Connect to MySQL</title>
+    <title>Book Catalog</title>
   </head>
   <body>
   <?php 
