@@ -13,7 +13,9 @@
 
   	$query = 'SELECT * FROM BOOK';
 
-  	$books = $db->query($query);
+  	$
+
+  	$catalog = $db->query($query);
   ?>
 
   <table>
@@ -35,7 +37,7 @@
   	<th>
   		Add to Cart
   	</th>
-		  <?php foreach ($books as $book) { ?>
+		  <?php foreach ($catalog as $book) { ?>
 		  	<tr>
 		  		<td>
 		  			Course #
@@ -47,7 +49,7 @@
 		  			Book Image
 		  		</td>
 		  		<td>
-		  			Book Title
+		  		<?php echo $book['bookTitle']; ?>
 		  		</td>
 		  		<td>
 				  	<?php echo $book['price']; ?>
