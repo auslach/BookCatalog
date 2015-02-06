@@ -11,9 +11,13 @@
 
   	$db = new PDO($dsn, $username, $password);
 
-  	$query = 'SELECT * FROM BOOK';
-
-  	$
+  	$query = 'SELECT course.courseID, course.courseTitle, book.isbn13, book.bookTitle, book.price
+							FROM book
+							JOIN coursebook
+							ON book.isbn13=coursebook.book
+							JOIN course
+							ON coursebook.course=course.courseID
+							ORDER BY course.courseID';
 
   	$catalog = $db->query($query);
   ?>
@@ -40,16 +44,16 @@
 		  <?php foreach ($catalog as $book) { ?>
 		  	<tr>
 		  		<td>
-		  			Course #
+			  		<a href="http://www.csupomona.edu/~cba/computer-information-systems/curriculum/courses.shtml" target="_blank"><?php echo $book['courseID']; ?></a>
 		  		</td>
 		  		<td>
-		  			Course Title
+			  		<?php echo $book['courseTitle']; ?>
 		  		</td>
 		  		<td>
-		  			Book Image
+		  			<img src="images/<?php echo $book['isbn13']; ?>.jpg" />
 		  		</td>
 		  		<td>
-		  		<?php echo $book['bookTitle']; ?>
+			  		<?php echo $book['bookTitle']; ?>
 		  		</td>
 		  		<td>
 				  	<?php echo $book['price']; ?>
