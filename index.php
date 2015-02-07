@@ -37,6 +37,8 @@
     if ($page == 0) $page = 1; // if no page variable, default to 1
     $prev = $page - 1; // prev, subtract 1 from page
     $next = $page + 1; // next, add 1 to page
+    $prev_1 = $prev - 1; // prev, subtract 1 from page
+    $next_1 = $next + 1; // next, add 1 to page
     $lastpage = ceil($total_pages/$limit);
 
   ?>
@@ -46,19 +48,29 @@
 
   <table>
     <tr>
-      <td>
-        <?php if ($page > 1) : ?>
-          <a href="<?php echo "?page=$prev"; ?>"><?php echo $prev; ?></a>
+      <?php if ($page > 1) : ?>
+        <?php if ($page > 2) : ?>
+          <td>
+            <a href="<?php echo "?page=$prev_1"; ?>"><?php echo $prev_1; ?></a>
+          </td>
         <?php endif; ?>
-      </td>
+        <td>
+          <a href="<?php echo "?page=$prev"; ?>"><?php echo $prev; ?></a>
+        </td>
+      <?php endif; ?>
       <td>
         <?php echo $page; ?>
       </td>
-      <td>
         <?php if ($count > $page) : ?>
-          <a href="<?php echo "?page=$next"; ?>"><?php echo $next; ?></a>
+          <td>
+            <a href="<?php echo "?page=$next"; ?>"><?php echo $next; ?></a>
+          </td>
+          <?php if ($count > $page + 1) : ?>
+            <td>
+              <a href="<?php echo "?page=$next_1"; ?>"><?php echo $next_1; ?></a>
+            </td>
+          <?php endif; ?>
         <?php endif; ?>
-      </td>
     </tr>
   </table>
   <table>
