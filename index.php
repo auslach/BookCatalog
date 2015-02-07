@@ -3,19 +3,14 @@
   <head>
     <title>Book Catalog</title>
   <style>
-    table, td, tr, td {
+    table, th, tr, td {
       border: 1px solid black;
     }
   </style>
   </head>
   <body>
   <?php
-  	$dsn = 'mysql:host=localhost;dbname=BookCatalog';
-  	$username = 'php';
-  	$password = 'php';
-
-  	$db = new PDO($dsn, $username, $password);
-    // ============================
+    include('config.php');
 
     $limit = 6;
     $adjacents = 3;
@@ -94,10 +89,14 @@
 			  		<?php echo $book['courseTitle']; ?>
 		  		</td>
 		  		<td>
-		  			<img src="images/<?php echo $book['isbn13']; ?>.jpg" />
+            <a href="/book.php?id=<?php echo $book['isbn13']; ?>">
+              <img src="images/<?php echo $book['isbn13']; ?>.jpg" />
+            </a>
 		  		</td>
 		  		<td>
-			  		<?php echo $book['bookTitle']; ?>
+            <a href="/book.php?id=<?php echo $book['isbn13']; ?>">
+              <?php echo $book['bookTitle']; ?>
+            </a>
 		  		</td>
 		  		<td>
 				  	$<?php echo $book['price']; ?>
