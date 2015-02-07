@@ -6,6 +6,10 @@
     table, th, tr, td {
       border: 1px solid black;
     }
+    img {
+      width: 100px;
+      height: 100px;
+    }
   </style>
   </head>
   <body>
@@ -42,9 +46,54 @@
     $lastpage = ceil($total_pages/$limit);
 
   ?>
-  <br />
-  pagination
-  <br />
+  <h1>CIS Department Book Catalog</h1>
+  <h3><a href="#">View Cart</a></h3>
+  <table>
+  	<th>
+  		Course #
+  	</th>
+  	<th>
+  		Course Title
+  	</th>
+  	<th>
+  		Book Image
+  	</th>
+  	<th>
+  		Book Title
+  	</th>
+  	<th>
+  		Price
+  	</th>
+  	<th>
+  		Add to Cart
+  	</th>
+    <?php foreach ($catalog as $book) { ?>
+      <tr>
+        <td>
+          <a href="http://www.csupomona.edu/~cba/computer-information-systems/curriculum/courses.shtml" target="_blank"><?php echo $book['courseID']; ?></a>
+        </td>
+        <td>
+          <?php echo $book['courseTitle']; ?>
+        </td>
+        <td>
+          <a href="/book.php?id=<?php echo $book['isbn13']; ?>">
+            <img src="images/<?php echo $book['isbn13']; ?>.jpg" />
+          </a>
+        </td>
+        <td>
+          <a href="/book.php?id=<?php echo $book['isbn13']; ?>">
+            <?php echo $book['bookTitle']; ?>
+          </a>
+        </td>
+        <td>
+          $<?php echo $book['price']; ?>
+        </td>
+        <td>
+          Add to cart
+        </td>
+      </tr>
+    <?php } ?>
+  </table>
 
   <table>
     <tr>
@@ -73,52 +122,6 @@
         <?php endif; ?>
     </tr>
   </table>
-  <table>
-  	<th>
-  		Course #
-  	</th>
-  	<th>
-  		Course Title
-  	</th>
-  	<th>
-  		Book Image
-  	</th>
-  	<th>
-  		Book Title
-  	</th>
-  	<th>
-  		Price
-  	</th>
-  	<th>
-  		Add to Cart
-  	</th>
-		  <?php foreach ($catalog as $book) { ?>
-		  	<tr>
-		  		<td>
-			  		<a href="http://www.csupomona.edu/~cba/computer-information-systems/curriculum/courses.shtml" target="_blank"><?php echo $book['courseID']; ?></a>
-		  		</td>
-		  		<td>
-			  		<?php echo $book['courseTitle']; ?>
-		  		</td>
-		  		<td>
-            <a href="/book.php?id=<?php echo $book['isbn13']; ?>">
-              <img src="images/<?php echo $book['isbn13']; ?>.jpg" />
-            </a>
-		  		</td>
-		  		<td>
-            <a href="/book.php?id=<?php echo $book['isbn13']; ?>">
-              <?php echo $book['bookTitle']; ?>
-            </a>
-		  		</td>
-		  		<td>
-				  	$<?php echo $book['price']; ?>
-		  		</td>
-		  		<td>
-		  			Add to cart
-		  		</td>
-		  	</tr>
-			<?php } ?>
-	  </table>
 
   </body>
 </html>
