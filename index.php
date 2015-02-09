@@ -19,7 +19,7 @@
     $limit = 6;
     $adjacents = 3;
 
-    $page = $_GET['page'];
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
     if ($page) {
       $start = ($page - 1) * $limit;
     } else {
@@ -43,7 +43,6 @@
     $next = $page + 1; // next, add 1 to page
     $prev_1 = $prev - 1; // prev, subtract 1 from page
     $next_1 = $next + 1; // next, add 1 to page
-    $lastpage = ceil($total_pages/$limit);
 
   ?>
   <h1>CIS Department Book Catalog</h1>
