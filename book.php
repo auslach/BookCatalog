@@ -49,7 +49,7 @@
   <table>
     <tr>
       <td>
-          <img src="/images/<?php echo $b['isbn13']; ?>.jpg" />
+          <img src="images/<?php echo $b['isbn13']; ?>.jpg" />
       </td>
       <td>
         <dl>

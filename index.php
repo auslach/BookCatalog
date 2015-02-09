@@ -75,12 +75,12 @@
           <?php echo $book['courseTitle']; ?>
         </td>
         <td>
-          <a href="/book.php?id=<?php echo $book['isbn13']; ?>">
+          <a href="book.php?id=<?php echo $book['isbn13']; ?>">
             <img src="images/<?php echo $book['isbn13']; ?>.jpg" />
           </a>
         </td>
         <td>
-          <a href="/book.php?id=<?php echo $book['isbn13']; ?>">
+          <a href="book.php?id=<?php echo $book['isbn13']; ?>">
             <?php echo $book['bookTitle']; ?>
           </a>
         </td>
