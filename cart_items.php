@@ -72,10 +72,11 @@
       </td>
     </tr>
       <?php } ?>
-      <br />
+    <tr>
+      <td colspan=4></td>
+      <td><?php echo "Total Price: $".$total; ?></td>
+    </tr>
 </table>
-      <br />
-      <?php echo "Total Price: ".$total; ?>
 <?php
   } else {
     echo "You have no items in your cart";
