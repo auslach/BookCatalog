@@ -105,6 +105,7 @@
                            ?>" />
               <input type="submit" 
                            value="Add to Cart" />
+          </form>
         </td>
       </tr>
     <?php } ?>
