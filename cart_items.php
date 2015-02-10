@@ -1,5 +1,5 @@
-<?php echo count($_SESSION['cart_items']) ?>
-<?php Print_r($_SESSION['cart_items']) ?>
+<?php #echo count($_SESSION['cart_items']) ?>
+<?php #Print_r($_SESSION['cart_items']) ?>
 <hr />
 
 <?php
@@ -65,7 +65,8 @@
       </td>
       <td>
           <!-- show quantity -->
-          <?php echo $quantity; ?>
+                            <input type="text" name="newqty"
+                                value="<?php echo $quantity?>"/>
       </td>
       <td>
           <?php echo "$".$price; ?>
@@ -77,7 +78,11 @@
       <td><?php echo "Total Price: $".$total; ?></td>
     </tr>
 </table>
-<?php
+
+<form action ="update_cart.php" value ="Update">
+     <input type="submit" value="Update" />
+</form>
+<?php 
   } else {
     echo "You have no items in your cart";
   }
