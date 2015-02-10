@@ -20,11 +20,13 @@
  $isbn13 = $_POST['isbn13'];
  $quantity = $_POST['quantity'];
  
- $query = "SELECT * FROM book WHERE isbn13 = $isbn13";
+ $query = "SELECT * FROM book WHERE isbn13 = $isbn13 LIMIT 1";
  $book = $db->query($query);
+ $book = $book->fetch();
  ?>
 
- <?php //echo $book['bookTitle']; ?>
+
+ <?php echo $book['bookTitle']; ?>
       
         <h1>CIS Department Book Catalog</h1>
   <table>

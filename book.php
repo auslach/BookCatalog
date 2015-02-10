@@ -43,7 +43,7 @@
     $book = $db->query($book_query);
     $author = $db->query($author_query);
     $course = $db->query($course_query);
-    foreach ($book as $b) {}
+    $b = $book->fetch();
   ?>
 
   <table>
