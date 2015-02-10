@@ -3,8 +3,9 @@
   <head>
     <title>Book Catalog</title>
   <style>
-    table, td, tr, td {
+    table, th, tr, td {
       border: 1px solid black;
+      border-collapse: collapse;
     }
   </style>
   </head>
@@ -111,9 +112,20 @@
         </dl>
       </td>
       <td>
-        <a href="#">Add to Cart</a>
+        <form action="update_cart.php"
+              method="post"
+              value="Add to Cart">
+            <input type="hidden"
+                         name="quantity"
+                         value="1" />
+            <input type="hidden"
+                         name="isbn13"
+                         value="<?php echo $b['isbn13']; ?>" />
+            <input type="submit"
+                         value="Add to Cart" />
+        </form>
         <br />
-        <a href="viewcart.php">View Cart</a>
+        <a href="cart.php">View Cart</a>
       </td>
     </tr>
     <tr>

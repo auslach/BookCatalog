@@ -5,6 +5,7 @@
   <style>
     table, th, tr, td {
       border: 1px solid black;
+      border-collapse: collapse;
     }
     img {
       width: 100px;
@@ -47,7 +48,7 @@
 
   ?>
   <h1>CIS Department Book Catalog</h1>
-  <h3><a href="viewcart.php">View Cart</a></h3>
+  <h3><a href="cart.php">View Cart</a></h3>
   <table>
   	<th>
   		Course #
@@ -89,18 +90,16 @@
           $<?php echo $book['price']; ?>
         </td>
         <td>
-          <form action="update_cart.php" 
+          <form action="update_cart.php"
                 method="post"
                 value="Add to Cart">
-              <input type="hidden" 
+              <input type="hidden"
                            name="quantity"
                            value="1" />
-              <input type="hidden" 
+              <input type="hidden"
                            name="isbn13"
-                           value="<?php 
-                           echo $book['isbn13']; 
-                           ?>" />
-              <input type="submit" 
+                           value="<?php echo $book['isbn13']; ?>" />
+              <input type="submit"
                            value="Add to Cart" />
           </form>
         </td>
