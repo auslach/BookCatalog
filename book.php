@@ -113,7 +113,7 @@
       <td>
         <a href="#">Add to Cart</a>
         <br />
-        <a href="#">View Cart</a>
+        <a href="viewcart.php">View Cart</a>
       </td>
     </tr>
     <tr>

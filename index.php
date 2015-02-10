@@ -18,6 +18,7 @@
 
     $limit = 6;
     $adjacents = 3;
+    global $cart;
 
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     if ($page) {
@@ -46,7 +47,7 @@
 
   ?>
   <h1>CIS Department Book Catalog</h1>
-  <h3><a href="#">View Cart</a></h3>
+  <h3><a href="viewcart.php">View Cart</a></h3>
   <table>
   	<th>
   		Course #
@@ -88,7 +89,22 @@
           $<?php echo $book['price']; ?>
         </td>
         <td>
-          Add to cart
+          <?php echo $book['isbn13']; ?>
+          <form action="update_cart.php" 
+                method="post"
+                value="Add to Cart">
+              <input type="hidden" 
+                           name="quantity"
+                           value="1" />
+              <input type="hidden" 
+                           name="isbn13"
+                           value="<?php 
+                           echo $book['isbn13']; 
+                           //I think here it's pulling the last book in the loop (6 items per page)
+                           //Need to find how to pull the ID for the one related to the add button
+                           ?>" />
+              <input type="submit" 
+                           value="Add to Cart" />
         </td>
       </tr>
     <?php } ?>
