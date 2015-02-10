@@ -89,7 +89,6 @@
           $<?php echo $book['price']; ?>
         </td>
         <td>
-          <?php echo $book['isbn13']; ?>
           <form action="update_cart.php" 
                 method="post"
                 value="Add to Cart">
@@ -100,8 +99,6 @@
                            name="isbn13"
                            value="<?php 
                            echo $book['isbn13']; 
-                           //I think here it's pulling the last book in the loop (6 items per page)
-                           //Need to find how to pull the ID for the one related to the add button
                            ?>" />
               <input type="submit" 
                            value="Add to Cart" />
