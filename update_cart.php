@@ -27,12 +27,12 @@
   $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : "";
 
   if(array_key_exists($isbn13, $_SESSION['cart_items'])) {
-    //header("Location: cart.php");
+    header("Location: cart.php");
     $current_quantity = $_SESSION['cart_items'][$isbn13];
     $_SESSION['cart_items'][$isbn13]=$current_quantity+1;
   } else {
     $_SESSION['cart_items'][$isbn13]=$quantity;
-    //header("Location: cart.php");
+    header("Location: cart.php");
   }
 ?>
 
