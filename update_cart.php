@@ -12,63 +12,25 @@
   </style>
   </head>
   <body>
-      
+
  <?php
  include('config.php');
- 
+
  global $cart;
  $isbn13 = $_POST['isbn13'];
  $quantity = $_POST['quantity'];
- 
- $query = "SELECT * FROM book WHERE isbn13 = $isbn13 LIMIT 1";
- $book = $db->query($query);
- $book = $book->fetch();
- 
- $cart = array ($isbn13 => $quantity);
+
+ if (isset($isbn13) && isset($quantity)) {
+   $cart[$isbn13] = $quantity;
+ }
  ?>
 
+<?php Print_r($cart) ?>
 
- <?php echo $book['bookTitle'];
-        echo $book['courseID'];
-        echo $book['price'];
-                echo $book['quantity']; ?>
-      
         <h1>CIS Department Book Catalog</h1>
-  <table>
-  	<th>
-  		Course #
-  	</th>
-  	<th>
-  		Book Title
-  	</th>
-  	<th>
-  		Price
-  	</th>
-  	<th>
-  		Quantity
-  	</th>
-  	<th>
-  		Sub Total
-  	</th>
-        <?php foreach ($cart as $book) { ?>
-      <tr>
-        <td>
-          <?php echo $book['courseID']; ?>
-        </td>
-        <td>
-            <?php echo $book['bookTitle']; ?>
-        </td>
-        <td>
-            <?php echo $book['price']; ?>
-        </td>
-        <td>
-            <?php echo $book['quantity']; ?>
-        </td>
-        <td>
-            <?php echo $book['quantity'] * $book['price']; ?>
-        </td>
-  </table>
-        <?php } ?>
+
+        <?php include('cart.php'); ?>
+
         <h3><a href="index.php">Back to Catalog</a></h3>
   </body>
 </html>
