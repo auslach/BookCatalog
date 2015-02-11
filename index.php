@@ -91,8 +91,7 @@
         </td>
         <td>
           <form action="update_cart.php"
-                method="post"
-                value="Add to Cart">
+                method="post">
               <input type="hidden"
                            name="quantity"
                            value="1" />

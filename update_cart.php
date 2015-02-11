@@ -22,25 +22,28 @@
   }
 
   include('config.php');
+  // Update cart button
 
+  // Put new item in cart, or update quantity
   $isbn13 = isset($_POST['isbn13']) ? $_POST['isbn13'] : "";
   $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : "";
 
-  if(array_key_exists($isbn13, $_SESSION['cart_items'])) {
-    header("Location: cart.php");
-    $current_quantity = $_SESSION['cart_items'][$isbn13];
-    $_SESSION['cart_items'][$isbn13]=$current_quantity+1;
+  if (isset($_POST['isbn13'])) {
+    if(array_key_exists($isbn13, $_SESSION['cart_items'])) {
+      header("Location: cart.php");
+      $current_quantity = $_SESSION['cart_items'][$isbn13];
+      $_SESSION['cart_items'][$isbn13]=$current_quantity+1;
+    } else {
+      $_SESSION['cart_items'][$isbn13]=$quantity;
+      header("Location: cart.php");
+    }
   } else {
-    $_SESSION['cart_items'][$isbn13]=$quantity;
-    header("Location: cart.php");
+    // set new quantity
+    foreach ($_POST as $key => $value) {
+      $_SESSION['cart_items'][$key]=$value;
+    }
   }
 ?>
-
-<hr />
-<?php echo
-  $_SESSION['cart_items'][$isbn13];
-?>
-<hr />
 
         <h1>CIS Department Book Catalog</h1>
 

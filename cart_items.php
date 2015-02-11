@@ -1,15 +1,20 @@
-<?php #echo count($_SESSION['cart_items']) ?>
-<?php #Print_r($_SESSION['cart_items']) ?>
+<?php
+  if (isset($_SESSION['cart_items'])) {
+    echo count($_SESSION['cart_items']);
+    echo Print_r($_SESSION['cart_items']);
+  }
+?>
 <hr />
 
 <?php
-  if (count($_SESSION['cart_items']) > 0) {
+  if (isset($_SESSION['cart_items']) && count($_SESSION['cart_items']) > 0) {
     $isbns = "";
     foreach($_SESSION['cart_items'] as $isbn=>$value) {
       $isbns = $isbns . $isbn . ",";
     }
     $isbns = rtrim($isbns, ',');
 ?>
+
 <table>
   <th>
     Course #
@@ -65,8 +70,8 @@
       </td>
       <td>
           <!-- show quantity -->
-                            <input type="text" name="newqty"
-                                value="<?php echo $quantity?>"/>
+          <form action="update_cart.php" method="post">
+            <input type="number" name="<?php echo $book['isbn13']?>" value="<?php echo $quantity ?>" />
       </td>
       <td>
           <?php echo "$".$price; ?>
@@ -79,10 +84,9 @@
     </tr>
 </table>
 
-<form action ="update_cart.php" value ="Update">
-     <input type="submit" value="Update" />
-</form>
-<?php 
+       <input type="submit" value="Update" />
+  </form>
+<?php
   } else {
     echo "You have no items in your cart";
   }
